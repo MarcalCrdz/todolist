@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Estágio de execução
-FROM openjdk:17-jdk-slim
+# Estágio de execução (Usando uma imagem estável e atualizada)
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY --from=builder /app/target/todolist-1.0.0.jar app.jar
 EXPOSE 8080
